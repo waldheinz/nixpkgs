@@ -13,6 +13,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ pkg-config ];
 
+  outputs = [ "out" "dev" ];
+
   buildInputs = [ libpng ];
 
   configureFlags = lib.optional stdenv.isAarch32 "--disable-arm-iwmmxt";
