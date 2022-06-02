@@ -21,6 +21,8 @@ stdenv.mkDerivation rec {
 
   nativeBuildInputs = [ cmake python3 ];
 
+  outputs = [ "out" "dev" ];
+
   cmakeFlags = ["-DWITH_TESTS=ON"];
 
   strictDeps = true;
@@ -31,6 +33,9 @@ stdenv.mkDerivation rec {
     substituteInPlace docopt.pc.in \
       --replace "@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@" \
                 "@CMAKE_INSTALL_LIBDIR@"
+
+    sed -i 's|include/docopt|''${CMAKE_INSTALL_INCLUDEDIR}/docopt|' CMakeLists.txt #  headers go to $dev
+    sed -i '/TARGETS docopt_s/d' CMakeLists.txt  # don't need that static archive either
   '';
 
   checkPhase = "LD_LIBRARY_PATH=$(pwd) python ./run_tests";
