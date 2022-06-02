@@ -332,6 +332,7 @@ self: super:
 
   libpciaccess = super.libpciaccess.overrideAttrs (attrs: {
     meta = attrs.meta // { platforms = lib.platforms.linux; };
+    outputs = [ "out" "dev" ];
   });
 
   setxkbmap = super.setxkbmap.overrideAttrs (attrs: {
