@@ -59,6 +59,8 @@ stdenv.mkDerivation rec {
     LIBTOOLIZE=libtoolize ./autogen.sh
   '';
 
+  outputs = [ "out" "dev" ];
+
   enableParallelBuilding = true;
 
   doCheck = true;
