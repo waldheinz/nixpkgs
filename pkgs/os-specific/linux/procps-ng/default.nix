@@ -35,6 +35,8 @@ stdenv.mkDerivation rec {
     })
   ];
 
+  outputs = [ "out" "dev" ];
+
   buildInputs = [ ncurses ]
     ++ lib.optional withSystemd systemd;
   nativeBuildInputs = [ pkg-config ];
