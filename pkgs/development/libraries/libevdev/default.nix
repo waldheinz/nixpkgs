@@ -9,6 +9,8 @@ stdenv.mkDerivation rec {
     sha256 = "sha256-HbukG8UW08p6vA2luGLv4+qKcBj6bpuXzp05QBsiQmw=";
   };
 
+  outputs = [ "out" "dev" ];
+
   nativeBuildInputs = [ python3 ];
 
   meta = with lib; {
