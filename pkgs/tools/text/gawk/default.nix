@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
   };
 
   # When we do build separate interactive version, it makes sense to always include man.
-  outputs = [ "out" "info" ]
+  outputs = [ "out" "dev" "info" ]
     ++ lib.optional (!interactive) "man";
 
   nativeBuildInputs = lib.optional (doCheck && stdenv.isLinux) glibcLocales;
