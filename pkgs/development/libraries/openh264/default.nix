@@ -15,6 +15,8 @@ stdenv.mkDerivation rec {
 
   buildInputs = lib.optional stdenv.hostPlatform.isWindows windows.pthreads;
 
+  outputs = [ "out" "dev" ];
+
   makeFlags = [
     "PREFIX=${placeholder "out"}"
     "ARCH=${stdenv.hostPlatform.linuxArch}"
