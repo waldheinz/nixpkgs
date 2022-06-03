@@ -14,6 +14,8 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [ flex bison ]
     ++ optionals withBluez [ bluez.dev pkg-config ];
 
+  outputs = [ "out" "dev" ];
+
   # We need to force the autodetection because detection doesn't
   # work in pure build environments.
   configureFlags = [
